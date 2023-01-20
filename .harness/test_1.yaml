@@ -40,3 +40,4 @@ template:
             type: StageRollback
     when:
       pipelineStatus: All
+  description: "1"
