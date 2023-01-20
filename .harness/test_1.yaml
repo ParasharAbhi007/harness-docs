@@ -27,7 +27,7 @@ template:
               spec: {}
           - step:
               type: EcsRollingDeploy
-              name: ECS Rolling Deploy_3
+              name: ECS Rolling Deploy_4
               identifier: ECS_Rolling_Deploy_3
               spec:
                 sameAsAlreadyRunningInstances: false
