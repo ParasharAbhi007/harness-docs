@@ -38,3 +38,5 @@ template:
             - AllErrors
           action:
             type: StageRollback
+    when:
+      pipelineStatus: All
