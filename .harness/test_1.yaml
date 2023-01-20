@@ -1,0 +1,40 @@
+template:
+  name: test
+  identifier: test
+  versionLabel: "1"
+  type: Stage
+  projectIdentifier: CSETest1
+  orgIdentifier: AbhiOrg
+  tags: {}
+  spec:
+    type: Deployment
+    spec:
+      deploymentType: ECS
+      service:
+        serviceRef: NewECS
+      environment:
+        environmentRef: ECS_INFRA
+        deployToAll: false
+        infrastructureDefinitions:
+          - identifier: ecs_INFRA
+      execution:
+        steps:
+          - step:
+              name: ECS Rolling Deploy
+              identifier: ecsRollingDeploy
+              type: EcsRollingDeploy
+              timeout: 10m
+              spec: {}
+        rollbackSteps:
+          - step:
+              name: ECS Rolling Rollback
+              identifier: ecsRollingRollback
+              type: EcsRollingRollback
+              timeout: 10m
+              spec: {}
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: StageRollback
