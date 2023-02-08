@@ -20,18 +20,18 @@ template:
       execution:
         steps:
           - step:
-              name: ECS Rolling Deploy
-              identifier: ecsRollingDeploy
-              type: EcsRollingDeploy
-              timeout: 10m
-              spec: {}
-          - step:
-              type: EcsRollingDeploy
-              name: ECS Rolling Deploy_4
-              identifier: ECS_Rolling_Deploy_3
+              type: ShellScript
+              name: Shell Script_1
+              identifier: ShellScript_1
               spec:
-                sameAsAlreadyRunningInstances: false
-                forceNewDeployment: false
+                shell: Bash
+                onDelegate: true
+                source:
+                  type: Inline
+                  spec:
+                    script: echo <+pipeline.variables.artifact_path>
+                environmentVariables: []
+                outputVariables: []
               timeout: 10m
         rollbackSteps:
           - step:
