@@ -29,7 +29,7 @@ template:
                 source:
                   type: Inline
                   spec:
-                    script: echo <+pipeline.variables.artifact_path>
+                    script: <+input>
                 environmentVariables: []
                 outputVariables: []
               timeout: 10m
