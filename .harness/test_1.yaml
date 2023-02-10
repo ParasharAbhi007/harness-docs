@@ -11,7 +11,8 @@ template:
     spec:
       deploymentType: ECS
       service:
-        serviceRef: NewECS
+        serviceRef: <+input>
+        serviceInputs: <+input>
       environment:
         environmentRef: ECS_INFRA
         deployToAll: false
